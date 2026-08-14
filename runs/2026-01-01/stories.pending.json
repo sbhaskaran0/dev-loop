@@ -1,0 +1,21 @@
+{
+  "pending": [
+    {
+      "key": "fix-postings-filter-reset",
+      "title": "Postings filter state survives a refresh",
+      "existing": false,
+      "issue": null,
+      "rationale": "Fixes an open user-reported bug (bug metric) with zero cost to other metrics — pareto-optimal.",
+      "metrics_improved": [
+        "bugs"
+      ],
+      "metrics_traded": [],
+      "size": "small",
+      "description": "The postings filter card resets after clicking Refresh. Preserve filter state across the refresh reload. AC: set a title filter, click Refresh, filter is still applied.",
+      "files_likely": [
+        "frontend/src/components/PostingsPage.tsx"
+      ]
+    }
+  ],
+  "note": "Linear disabled this run — file these by hand or re-run file_stories without --no-linear"
+}

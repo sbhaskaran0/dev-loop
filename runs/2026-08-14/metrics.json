@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-14T16:54:23-07:00",
+  "target": "c:\\Users\\siddh\\Job Applier",
+  "yield": {
+    "instrumented": true,
+    "note": null,
+    "per_day": [
+      {
+        "date": "2026-08-14",
+        "runs": 3,
+        "new": 254,
+        "new_qualifying": 1,
+        "new_title_matched": 3,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-13",
+        "runs": 2,
+        "new": 204,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-12",
+        "runs": 1,
+        "new": 125,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-11",
+        "runs": 2,
+        "new": 173,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-10",
+        "runs": 1,
+        "new": 53,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-09",
+        "runs": 1,
+        "new": 10,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-08",
+        "runs": 1,
+        "new": 76,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-07",
+        "runs": 1,
+        "new": 701,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-02",
+        "runs": 1,
+        "new": 0,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 79
+      },
+      {
+        "date": "2026-08-01",
+        "runs": 1,
+        "new": 56,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 3
+      },
+      {
+        "date": "2026-07-31",
+        "runs": 2,
+        "new": 189,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      }
+    ]
+  },
+  "applications": {
+    "instrumented": true,
+    "note": "denominator NOT instrumented (JOB-103 open): 'attempted' is a weak proxy from data/prep snapshot files",
+    "total_tracked": 83,
+    "last_7_days": [
+      {
+        "date": "2026-08-13",
+        "submitted": 5,
+        "manual_submission": 0,
+        "other": 0
+      },
+      {
+        "date": "2026-08-11",
+        "submitted": 2,
+        "manual_submission": 1,
+        "other": 0
+      },
+      {
+        "date": "2026-08-07",
+        "submitted": 4,
+        "manual_submission": 1,
+        "other": 0
+      }
+    ],
+    "attempted_proxy_by_day": {
+      "2026-08-13": 7,
+      "2026-08-07": 5,
+      "2026-08-12": 5
+    }
+  },
+  "bugs": {
+    "instrumented": true,
+    "total": 1,
+    "open": [
+      {
+        "ts": "2026-08-14T16:42:10-07:00",
+        "profile": "siddharth",
+        "page": "postings",
+        "text": "Test bug: filter resets after refresh (instrumentation smoke test)",
+        "status": "open"
+      }
+    ]
+  },
+  "tokens": {
+    "instrumented": true,
+    "cost_usd_by_day": {},
+    "sessions_tracked": 2,
+    "note": "hook records win; webchat records fill uncovered sessions only"
+  },
+  "digest_excerpt": "# Watchlist digest\n\nRefreshed **2026-08-14T23:42:14+00:00** — 8,736 postings scanned, 18 new, 2 removed, 1 relisted.\n\n## New postings passing the baseline (1)\n\n- **Coinbase — Chief of Staff** · Remote - USA · remote · $212,330–$249,800 (from JD) · 7+ yrs (advisory)\n  https://boards.greenhouse.io/embed/job_app?for=coinbase&token=8131316\n\n## Board health\n\n_All boards fetched clean._\n\n## Yield per company (active postings)\n\n| Company | Active | Title-matched | Qualifying |\n|---|---|---|---|\n| Harvey | 393 | 24 | 16 |\n| OpenAI | 744 | 22 | 16 |\n| Instacart | 112 | 15 | 15 |\n| Samsara | 222 | 15 | 12 |\n| Plaid | 103 | 12 | 11 |\n| Coinbase | 166 | 11 | 10 |\n| Stripe | 576 | 39 | 9 |\n| Headway | 82 | 9 | 8 |\n| Snowflake | 387 | 18 | 7 |\n| Zip | 127 | 12 | 7 |\n| Ramp | 136 | 7 | 7 |\n| Vanta | 96 | 7 | 7 |\n| Abridge | 45 | 6 | 6 |\n| Mercury | 61 | 6 | 6 |\n| PermitFlow | 43 | 6 | 6 |\n| Turquoise Health | 16 | 6 | 5 |\n| Rula | 39 | 5 | 5 |\n| Benchling | 51 | 5 | 4 |\n| Yuno | 42 | 5 | 4 |\n| Alpaca | 63 | 4 | 4 |\n| Boulevard | 15 | 4 | 4 |\n| ClassDojo | 12 | 4 | 4 |\n| Cresta | 95 | 4 | 4 |\n| Hadrian | 130 | 4 | 4 |\n| Qventus | 22 | 4 | 4 |\n| Webflow | 28 | 4 | 4 |\n| Flock Safety | 37 | 6 | 3 |\n| ElevenLabs | 242 | 5 | 3 |\n| Notion | 133 | 5 | 3 |\n| Ambience Healthcare | 21 | 4 | 3 |\n| ClickUp | 67 | 4 | 3 |\n| Temporal Technologies | 53 | 4 | 3 |\n| Valon Labs | 22 | 4 | 3 |\n| Atticus | 11 | 3 | 3 |\n| Grow Therapy | 27 | 3 | 3 |\n| Replit | 75 | 3 | 3 |\n| Sprinter Health | 112 | 3 | 3 |\n| Suno | 59 | 6 | 2 |\n| Mixpanel | 56 | 4 | 2 |\n| Tailscale | 57 | 4 | 2 |\n| FloQast | 21 | 3 | 2 |\n| Stepful | 37 | 3 | 2 |\n| Substack | 13 | 3 | 2 |\n| Benepass | 13 | 2 | 2 |\n| Counsel Health | 16 | 2 | 2 |\n| Doctronic | 13 | 2 | 2 |\n| HappyRobot | 76 | 2 | 2 |\n| Linear | 33 | 2 | 2 |\n| Propel | 7 | 2 | 2 |\n| Rillet | 24 | 2 | 2 |\n| Speak | 42 | 2 | 2 |\n| TRM Labs | 125 | 2 | 2 |\n| Skydio | 112 | 5 | 1 |\n| Toast | 313 | 4 | 1 |\n| Kong | 84 | 2 | 1 |\n| AtoB | 13 | 1 | 1 |\n| Greenlight | 16 | 1 | 1 |\n| Modern Treasury | 7 | 1 | 1 |\n| Pair Team | 34 | 1 | 1 |\n| SentiLink | 58 | 1 | 1 |\n| Splice | 4 | 1 | 1 |\n| Stedi | 12 | 1 | 1 |\n| Brex | 293 | 33 | 0 |\n| Databricks | 808 | 31 | 0 |\n| Anthropic | 437 | 19 | 0 |\n| Scale AI | 211 | 19 | 0 |\n| Airbnb | 187 | 15 | 0 |\n| Decagon | 134 | 12 | 0 |\n| Figma | 161 | 8 | 0 |\n| Robinhood | 124 | 7 | 0 |\n| Discord | 50 | 2 | 0 |\n| Mistral AI | 164 | 2 | 0 |\n| Carta | 59 | 1 | 0 |\n| Vercel | 83 | 1 | 0 |\n| Airtable | 17 | 0 | 0 |\n| Cursor | 114 | 0 | 0 |\n| GOAT Group | 30 | 0 | 0 |\n| Ladder | 2 | 0 | 0 |\n| Tala | 11 | 0 | 0 |\n\n_Qualifying = passes titles/seniority/location/salary-floor deterministically. Yield informs the JOB-26 watchlist rework._\n",
+  "preflight": []
+}

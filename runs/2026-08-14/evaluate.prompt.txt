@@ -1,0 +1,336 @@
+You are the morning evaluator of an autonomous development loop for the project at c:/Users/siddh/Job Applier. Your job: score the app's health from real metrics, weigh it against the user's goals, and propose only the enhancements worth building. You are running unattended — never pause to ask anything.
+
+STRICT BOUNDARIES: You are READ-ONLY in this repository. Do not edit, create, or delete any file inside c:/Users/siddh/Job Applier or anywhere else, EXCEPT the two artifact files named at the bottom (which live outside the repo). Do not run write-commands (git commit, pip install, etc.). Never touch profiles/, data/ (except reading), or anything under the user's home directory.
+
+## Inputs
+
+### Metrics snapshot (collected this morning)
+```json
+{
+  "collected_at": "2026-08-14T16:54:23-07:00",
+  "target": "c:\\Users\\siddh\\Job Applier",
+  "yield": {
+    "instrumented": true,
+    "note": null,
+    "per_day": [
+      {
+        "date": "2026-08-14",
+        "runs": 3,
+        "new": 254,
+        "new_qualifying": 1,
+        "new_title_matched": 3,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-13",
+        "runs": 2,
+        "new": 204,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-12",
+        "runs": 1,
+        "new": 125,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-11",
+        "runs": 2,
+        "new": 173,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-10",
+        "runs": 1,
+        "new": 53,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-09",
+        "runs": 1,
+        "new": 10,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-08",
+        "runs": 1,
+        "new": 76,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-07",
+        "runs": 1,
+        "new": 701,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      },
+      {
+        "date": "2026-08-02",
+        "runs": 1,
+        "new": 0,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 79
+      },
+      {
+        "date": "2026-08-01",
+        "runs": 1,
+        "new": 56,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 3
+      },
+      {
+        "date": "2026-07-31",
+        "runs": 2,
+        "new": 189,
+        "new_qualifying": null,
+        "new_title_matched": null,
+        "boards_failed": 0
+      }
+    ]
+  },
+  "applications": {
+    "instrumented": true,
+    "note": "denominator NOT instrumented (JOB-103 open): 'attempted' is a weak proxy from data/prep snapshot files",
+    "total_tracked": 83,
+    "last_7_days": [
+      {
+        "date": "2026-08-13",
+        "submitted": 5,
+        "manual_submission": 0,
+        "other": 0
+      },
+      {
+        "date": "2026-08-11",
+        "submitted": 2,
+        "manual_submission": 1,
+        "other": 0
+      },
+      {
+        "date": "2026-08-07",
+        "submitted": 4,
+        "manual_submission": 1,
+        "other": 0
+      }
+    ],
+    "attempted_proxy_by_day": {
+      "2026-08-13": 7,
+      "2026-08-07": 5,
+      "2026-08-12": 5
+    }
+  },
+  "bugs": {
+    "instrumented": true,
+    "total": 1,
+    "open": [
+      {
+        "ts": "2026-08-14T16:42:10-07:00",
+        "profile": "siddharth",
+        "page": "postings",
+        "text": "Test bug: filter resets after refresh (instrumentation smoke test)",
+        "status": "open"
+      }
+    ]
+  },
+  "tokens": {
+    "instrumented": true,
+    "cost_usd_by_day": {},
+    "sessions_tracked": 2,
+    "note": "hook records win; webchat records fill uncovered sessions only"
+  },
+  "digest_excerpt": "# Watchlist digest\n\nRefreshed **2026-08-14T23:42:14+00:00** — 8,736 postings scanned, 18 new, 2 removed, 1 relisted.\n\n## New postings passing the baseline (1)\n\n- **Coinbase — Chief of Staff** · Remote - USA · remote · $212,330–$249,800 (from JD) · 7+ yrs (advisory)\n  https://boards.greenhouse.io/embed/job_app?for=coinbase&token=8131316\n\n## Board health\n\n_All boards fetched clean._\n\n## Yield per company (active postings)\n\n| Company | Active | Title-matched | Qualifying |\n|---|---|---|---|\n| Harvey | 393 | 24 | 16 |\n| OpenAI | 744 | 22 | 16 |\n| Instacart | 112 | 15 | 15 |\n| Samsara | 222 | 15 | 12 |\n| Plaid | 103 | 12 | 11 |\n| Coinbase | 166 | 11 | 10 |\n| Stripe | 576 | 39 | 9 |\n| Headway | 82 | 9 | 8 |\n| Snowflake | 387 | 18 | 7 |\n| Zip | 127 | 12 | 7 |\n| Ramp | 136 | 7 | 7 |\n| Vanta | 96 | 7 | 7 |\n| Abridge | 45 | 6 | 6 |\n| Mercury | 61 | 6 | 6 |\n| PermitFlow | 43 | 6 | 6 |\n| Turquoise Health | 16 | 6 | 5 |\n| Rula | 39 | 5 | 5 |\n| Benchling | 51 | 5 | 4 |\n| Yuno | 42 | 5 | 4 |\n| Alpaca | 63 | 4 | 4 |\n| Boulevard | 15 | 4 | 4 |\n| ClassDojo | 12 | 4 | 4 |\n| Cresta | 95 | 4 | 4 |\n| Hadrian | 130 | 4 | 4 |\n| Qventus | 22 | 4 | 4 |\n| Webflow | 28 | 4 | 4 |\n| Flock Safety | 37 | 6 | 3 |\n| ElevenLabs | 242 | 5 | 3 |\n| Notion | 133 | 5 | 3 |\n| Ambience Healthcare | 21 | 4 | 3 |\n| ClickUp | 67 | 4 | 3 |\n| Temporal Technologies | 53 | 4 | 3 |\n| Valon Labs | 22 | 4 | 3 |\n| Atticus | 11 | 3 | 3 |\n| Grow Therapy | 27 | 3 | 3 |\n| Replit | 75 | 3 | 3 |\n| Sprinter Health | 112 | 3 | 3 |\n| Suno | 59 | 6 | 2 |\n| Mixpanel | 56 | 4 | 2 |\n| Tailscale | 57 | 4 | 2 |\n| FloQast | 21 | 3 | 2 |\n| Stepful | 37 | 3 | 2 |\n| Substack | 13 | 3 | 2 |\n| Benepass | 13 | 2 | 2 |\n| Counsel Health | 16 | 2 | 2 |\n| Doctronic | 13 | 2 | 2 |\n| HappyRobot | 76 | 2 | 2 |\n| Linear | 33 | 2 | 2 |\n| Propel | 7 | 2 | 2 |\n| Rillet | 24 | 2 | 2 |\n| Speak | 42 | 2 | 2 |\n| TRM Labs | 125 | 2 | 2 |\n| Skydio | 112 | 5 | 1 |\n| Toast | 313 | 4 | 1 |\n| Kong | 84 | 2 | 1 |\n| AtoB | 13 | 1 | 1 |\n| Greenlight | 16 | 1 | 1 |\n| Modern Treasury | 7 | 1 | 1 |\n| Pair Team | 34 | 1 | 1 |\n| SentiLink | 58 | 1 | 1 |\n| Splice | 4 | 1 | 1 |\n| Stedi | 12 | 1 | 1 |\n| Brex | 293 | 33 | 0 |\n| Databricks | 808 | 31 | 0 |\n| Anthropic | 437 | 19 | 0 |\n| Scale AI | 211 | 19 | 0 |\n| Airbnb | 187 | 15 | 0 |\n| Decagon | 134 | 12 | 0 |\n| Figma | 161 | 8 | 0 |\n| Robinhood | 124 | 7 | 0 |\n| Discord | 50 | 2 | 0 |\n| Mistral AI | 164 | 2 | 0 |\n| Carta | 59 | 1 | 0 |\n| Vercel | 83 | 1 | 0 |\n| Airtable | 17 | 0 | 0 |\n| Cursor | 114 | 0 | 0 |\n| GOAT Group | 30 | 0 | 0 |\n| Ladder | 2 | 0 | 0 |\n| Tala | 11 | 0 | 0 |\n\n_Qualifying = passes titles/seniority/location/salary-floor deterministically. Yield informs the JOB-26 watchlist rework._\n",
+  "preflight": []
+}
+
+```
+
+### The user's overarching goals (weights 1-5)
+# Overarching Goals
+
+Edit freely — the morning evaluator reads this file verbatim and weighs every
+candidate enhancement against it. Format per goal: a heading, then Statement /
+Success criteria / Weight (1–5, higher = matters more).
+
+## G1: Land interviews, not just applications
+- Statement: The pipeline should optimize for responses and interviews, not raw submission count — quality of targeting and materials over volume.
+- Success criteria: Response rate becomes trackable, then trends up over 4 weeks.
+- Weight: 5
+
+## G2: Keep the system cheap to run
+- Statement: Daily automation (applies + this loop) should stay at dollar-scale, not tens of dollars.
+- Success criteria: 7-day average token cost visible in the scorecard and not trending up without a corresponding capability gain.
+- Weight: 3
+
+## G3: The loop earns trust before it earns autonomy
+- Statement: Prefer instrumentation, verification, and small reversible changes over ambitious refactors; nothing lands on main without a human-reviewed PR.
+- Success criteria: Zero loop-caused regressions reported as bugs; every merged PR passed its verification gates.
+- Weight: 4
+
+
+### Target-project context documents (incl. the de-scope list — NEVER propose anything listed as deferred/not-built there)
+--- CLAUDE.md ---
+# CLAUDE.md
+
+Project-level guidance for Claude Code. See `SESSION_HANDOFF.md` for full architecture and current state.
+
+## Task tracking — keep Linear in sync
+
+Pending work for this project is tracked in **Linear**, team **Job Applier Task Management** (issue prefix `JOB-*`). The Linear MCP server is configured in local dev config (`~/.claude.json`), not committed to the repo.
+
+**When you complete a task, update Linear before considering the work done:**
+
+1. **Find the matching issue.** If the work maps to an existing `JOB-*` issue, use that. If no issue exists for it, create one first (via `mcp__linear__save_issue`) so the board stays the source of truth, then proceed.
+2. **Only mark work done once it's verified** — tests pass / change is committed / behavior confirmed. Mirror the project's "trust only a verified result" principle; do not close an issue optimistically.
+3. **Move the issue to `Done`** (`mcp__linear__save_issue` with `id` + `state: "Done"`).
+4. **Add a brief closing comment** (`mcp__linear__save_comment`) summarizing what changed and referencing the commit SHA(s) or files touched.
+5. If a task is only **partially** complete, leave it open and instead post a progress comment and/or move it to `In Progress` — don't close it.
+
+**Scope:** this applies to substantive units of work (a feature, fix, or discrete backlog item), not trivial intermediate steps. When in doubt about whether a completed change warrants a Linear update, err toward updating it.
+
+If the Linear MCP tools are unavailable (server not connected in the current session), note that the Linear update is pending rather than silently skipping it.
+
+## Knowledge base — fold new context material into the curated stores
+
+When the user adds new material to the active profile's `context/` dir (pasted application answers, cover letters, writing samples, notes) or shares durable new facts in conversation, **proactively fold it into the curated knowledge stores** — this does **not** happen automatically. All of these live under the active profile (resolve paths with `mcp__job-applier__get_profile_paths`):
+
+- **`context/background.md`** — the canonical career narrative (roles, dates, metrics, tense). Add any new concrete facts/metrics (e.g. a new adoption number, a project detail). Keep the career-timeline/tense rules intact.
+- **`context/stories.md`** — reusable situation→action→result talking points and positioning. Enrich existing stories or add new ones for open-ended questions ("hardest thing", "describe a product", operating style).
+- **the profile's `data/history.json`** — reusable Q&A. Add via `mcp__job-applier__save_answer` (keeps normalized dedupe/date). Scope honestly: `evergreen` (short stable facts), `company` (essays/tailored — use empty company for a generic essay so it surfaces but stays gated for adaptation, or the real company name to auto-reuse there), `conditional` (situation-dependent).
+
+**What IS automatic (no fold-in needed):** `search_context` and the tailoring voice corpus (`get_cover_letter_examples`) both scan the profile's `context/` **live** on every call, so a newly-added file is immediately searchable for crafting answers and available as cover-letter voice. The fold-in above is specifically to keep the *curated* narrative (`background.md`/`stories.md`) and the *reusable-answer* store (`history.json`) current — those are hand-maintained, not regenerated.
+
+**Ground truth, never fabricate.** Only fold in what the material or the user actually states; get role recency/tense right per the active profile's `context/background.md` (its career timeline decides which role is current and which have ended; its dates override resume text). Lightly fix typos/grammar when adapting the user's prose into a reusable answer; don't invent metrics or details.
+
+
+--- docs/backlog-multiuser.md ---
+# Multi-user generalization — Linear backlog (mirror)
+
+> **Status:** pushed to Linear 2026-08-10 (team **Job Applier Task
+> Management**) — Linear is now the source of truth; this file is the mirror.
+> Epics: **JOB-81** (M1, Done) · **JOB-82** (M2) · **JOB-83** (M3) ·
+> **JOB-84** (M4). Stories: M2.1–M2.6 = JOB-85…90 · M3.1–M3.4 = JOB-91…94 ·
+> M4.1–M4.4 = JOB-95…98. JOB-33 (portability data split) closed as
+> superseded by JOB-81; JOB-34 (env hardening) stays open.
+>
+> Product decisions baked in: hybrid deployment (GCP data plane, local
+> execution, each user's own Claude subscription) · ~2–10 known users ·
+> EEO self-ID local-only · git PII stop-tracking only · shared global
+> watchlist · sequencing M1→M2→M3→M4.
+
+## Epic M1 (JOB-81, **Done**) — Profile system: local abstraction (`feat/profile-system-m1`, commits `e38f06a` + `8671269`)
+
+| # | Story | Depends on | Status |
+|---|---|---|---|
+| M1.1 | **Profile resolution layer.** `src/profiles.py` (ActiveProfile; env → `applyer.local.json` → single-dir → legacy fallback), `src/config.py` lazy `__getattr__` path resolution, EEO merged from local-only `eeo.yaml`, atomic JSON writes, mtime-guarded resume.txt sync. AC: legacy checkout behaves identically; scratch profile via `JOB_APPLIER_PROFILE` isolates fully. | — | done |
+| M1.2 | **Browser profile-awareness.** Screenshot/artifact defaults → profile `runtime/`; persistent Chromium context (`launch_persistent_context`, per-profile `user_data_dir`) for durable cookies + stable anti-bot fingerprint. AC: cookie survives a browser restart; screenshots land under the profile. Revert-safe: persistence can be rolled back alone. | M1.1 | done |
+| M1.3 | **Server + store profile paths.** `data_api.py` resume checks/uploads → profile paths; `store.passes_baseline` computes seniority exclusion at query time from the caller's baseline (stored `seniority_flag` becomes vestigial). AC: uploads land in the profile; Director-title row fails baseline for a user excluding Director without consulting the stored flag. | M1.1 | done |
+| M1.4 | **De-personalized skills + profile-paths tool.** Remove "Siddharth"/employment-tense facts from apply-to-job, apply-batch, tailor-application skills + CLAUDE.md (identity read from profile + `context/background.md`); Gmail OTP guard (connected inbox must match profile email); `get_profile_paths` MCP tool; prep dir → profile. AC: grep for personal facts across skills returns nothing. | M1.1 (tool only) | done |
+| M1.5 | **Migration script + template.** `scripts/migrate_profile.py` (line-based EEO split preserving YAML comments, verified round-trip, moves all personal artifacts to `profiles/siddharth/`), tracked `profiles/_template/` skeleton, `.gitignore` for `profiles/*` + `applyer.local.json`. AC: fixture-tree test passes; template has zero personal values. | M1.1 | done |
+| M1.6 | **Migration run + git untracking + verification + docs.** Run migration on real data; `git rm --cached` all personal files (user_profile.yaml, job_criteria.yaml, resume.*, context/, data/history.json, data/applications.json, data/token_usage.jsonl); golden-path verification (refresh, find-jobs, apply dry-run, resolve_fields diff, second-profile smoke, fresh-clone boot); README/USER_GUIDE/SESSION_HANDOFF + profile-system Mermaid; commit + PR. AC: `git ls-files` shows no personal file; behavior byte-identical. | M1.2–M1.5 | done |
+
+## Epic M2 (JOB-82) — GCP data plane + auth
+
+| # | Story | Depends on |
+|---|---|---|
+| M2.1 (JOB-85) | **Postgres schema + store port.** Cloud SQL Postgres; `cloud/db.py` ports `src/store.py` SQL: `users`, `agent_tokens(token_hash,label,revoked_at,last_used_at)`, `profiles(facts JSONB)`, `criteria(JSONB)`, `history(UNIQUE(user_id,question_norm))`, `applications(UNIQUE(user_id,company_norm,title_norm))`, `boards`, `postings` (no `seniority_flag`), `posting_locations`, `location_observations`, `refresh_runs`, `candidate_boards` (per-user counts computed on demand). | M1 |
+| M2.2 (JOB-86) | **Auth: `/account` + PAT.** Google Identity Services sign-in on one static page; ID-token JWT verify + `ALLOWED_EMAILS` allowlist; mint/rotate/revoke SHA-256-hashed personal access tokens with `last_used_at`; single `current_user` FastAPI dependency for `/api/*`. | — |
+| M2.3 (JOB-87) | **Cloud API.** `cloud/api.py`: per-user profile/criteria/history/applications CRUD (server-side EEO-key rejection), postings query, watchlist registry + proposals, GCS signed URLs for resume/context (`users/{uid}/…`). Dockerfile + `docs/deploy.md` (plain gcloud, Secret Manager for DB password). | M2.1, M2.2 |
+| M2.4 (JOB-88) | **Shared refresh job.** Containerized `python -m src.refresh --backend=cloud` as a Cloud Run Job on Cloud Scheduler; removal sweep keyed to boards fetched OK this run (replaces watchlist-scoped sweep — kills the false-removal hazard). | M2.1 (JOB-85) |
+| M2.5 (JOB-89) | **Local datastore + sync.** `src/datastore.py` (`Store` protocol: `LocalStore` = today/offline, `CloudStore` = httpx + PAT from `profiles/<id>/secrets/agent_token`, TTL cache, write-through, offline fallback + visible flag); `src/sync.py` mirrors GCS resume/context locally so `search_context`/voice corpus stay file-based; backend selection in `applyer.local.json`. `already_applied` moves out of the store into the caller (`list_postings_from_store(..., applied_keys)`). | M2.3 (JOB-87) |
+| M2.6 (JOB-90) | **Corpus migration + isolation verification.** One-shot postings.db → Postgres load; two-account test: full user isolation, shared corpus visible to both, token revoke → 401 + re-link message, offline degradation, EEO-key absence in a captured apply session's outbound traffic. | M2.1–M2.5 |
+
+## Epic M3 (JOB-83) — Onboarding workflow
+
+| # | Story | Depends on |
+|---|---|---|
+| M3.1 (JOB-91) | **`/onboard-profile` skill.** Three modes run in the user's own local Claude session: `resume` (parse uploaded resume → `profile.yaml` facts + `context/background.md` career timeline), `letters` (pasted cover letters → `context/stories.md` + voice notes), `background` (free text → structured background). | M1 |
+| M3.2 (JOB-92) | **Onboarding wizard.** Extend `Onboarding.tsx` stepper: Welcome → Link account (PAT paste+verify) → Résumé (upload → skill parse → confirm facts) → Background & voice → Preferences (tag-driven titles/seniority/locations/remote/salary via existing MultiSelect/RangeSlider/Toggle; neutral taxonomy) → Requirements (work auth, sponsorship, relocation, notice, salary) → Connections (Claude Code + Gmail-identity check) → Done. | M2.2 (PAT step); M3.1 |
+| M3.3 (JOB-93) | **Completion flag + fallback parse.** `GET/PUT /api/onboarding` ↔ `profiles/<id>/onboarding.json` (mirrored to cloud); auto-open wizard when incomplete; deterministic server-side resume prefill (pypdf text + regex email/phone/LinkedIn) so the wizard is useful before any agent session. | M3.2 (JOB-92) |
+| M3.4 (JOB-94) | **Neutral taxonomy + de-hardcoded defaults.** Shared title/metro taxonomy source; remove Siddharth's defaults from `JobCriteriaCard.tsx`, `PostingsPage.tsx` COMMON_METROS, `ApplyModal.tsx` crafting regex. (Shared with M4.) | — |
+
+## Epic M4 (JOB-84) — Per-user filtered shared postings
+
+| # | Story | Depends on |
+|---|---|---|
+| M4.1 (JOB-95) | **Server-side per-user filtering.** Cloud `/api/postings` applies the requester's baseline (`passes_baseline(row, user_baseline)`) + per-user `already_applied` join; response shape unchanged (client filter card remains as refinement). | M2.5 (JOB-89) |
+| M4.2 (JOB-96) | **Filter explicitness UX.** "Filtered by your criteria — edit" affordance + hidden-by-filter count; per-user `is_new` via `last_seen_postings_at`. | M4.1 (JOB-95) |
+| M4.3 (JOB-97) | **Board subscriptions + proposals.** Per-user hide/show toggle (default all-visible); watchlist proposal → admin approve flow. | M4.1 (JOB-95) |
+| M4.4 (JOB-98) | **Per-user digest.** Rendered locally from the user-filtered cloud query. | M4.1 (JOB-95) |
+
+## Deferred / explicitly not built at ~10-user sca
+
+### Recent run logs (what this loop already did/proposed — don't re-propose)
+--- run 2026-01-01 ---
+# Dev-loop run -- 2026-01-01 (job-applier)
+
+Status: **in progress** | started 2026-08-14T16:54:07 | budget 500,000 output tokens | DRY RUN
+
+## collect
+
+_dry run: fixture metrics copied._
+
+## evaluate
+
+_dry run: fixture candidates copied._
+
+## file_stories
+
+_Linear disabled — 1 candidate(s) written to stories.pending.json._
+
+## finalize
+
+- dry run — email to siddharth99.ram@gmail.com skipped
+
+---
+
+Final status: **ok** | spent 0 output tokens / $0.00 | finished 2026-08-14T16:54:07
+
+
+
+Linear is DISABLED this run — skip reading Linear and note that in the scorecard.
+
+## Your tasks
+
+1. **Read the open backlog.** Use the Linear MCP tools (team "Job Applier Task Management") to list open issues. Note which open stories already cover a metric gap — never file duplicates. Stories labeled "loop" came from this loop.
+2. **Write a scorecard** — for each metric (posting yield, application success, reported bugs, token cost) plus each user goal: current value, trend if visible, and a 1-5 health score with one sentence of reasoning. Be honest about `instrumented: false` metrics — say what's blind and which open story fixes it.
+3. **Propose 2-4 candidate enhancements.** Each must be either (a) pareto-optimal — improves at least one metric/goal without materially hurting any other — or (b) a strong single-metric win with explicitly argued, minimal trade-offs. For each candidate: cross-check the de-scope list, the open backlog, and recent run logs. Prefer small, verifiable changes over grand ones. Open bug reports with `status: open` are first-class candidates (triage them into concrete fixes).
+4. If an existing open story is the right next work (rather than something new), include it as a candidate with its issue id and `"existing": true`.
+
+## Artifacts (write BOTH, exactly these paths)
+
+1. `C:\Users\siddh\dev-loop\runs\2026-08-14/evaluation.md` — the scorecard + reasoning, readable over coffee.
+2. `C:\Users\siddh\dev-loop\runs\2026-08-14/candidates.json` — machine-readable:
+```json
+{
+  "candidates": [
+    {
+      "key": "short-slug",
+      "title": "Story title",
+      "existing": false,
+      "issue": null,
+      "rationale": "why this is pareto-optimal / the trade-off argument",
+      "metrics_improved": ["yield"],
+      "metrics_traded": [],
+      "size": "small|medium|large",
+      "description": "full story body with an AC: clause",
+      "files_likely": ["src/store.py"]
+    }
+  ]
+}
+```
+
+Your final text reply must be exactly one line: DONE

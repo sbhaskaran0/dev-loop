@@ -1,0 +1,77 @@
+# Target-project config — the generalization boundary. Everything the
+# orchestrator knows about job-applier lives here or in adapters/job_applier.py.
+project: job-applier
+
+target:
+  # EXACT casing matters: MCP servers in ~/.claude.json (Linear) are keyed by
+  # this path string. Never normalize it.
+  cwd: "c:/Users/siddh/Job Applier"
+  remote: origin
+  base_ref: origin/main
+  pr_base: main
+  branch_prefix: loop
+  # interpreter used for verification gates inside worktrees (worktrees share
+  # the target's installed environment; system python here — no venv in repo)
+  venv_python: "python"
+
+adapter: adapters.job_applier
+adapter_paths:
+  db: "data/postings.db"
+  applications: "profiles/siddharth/data/applications.json"
+  prep_dir: "profiles/siddharth/data/prep"
+  bug_reports: "data/bug-reports.jsonl"
+  token_usage: "profiles/siddharth/data/token_usage.jsonl"
+
+linear:
+  team: "Job Applier Task Management"
+  prefix: "JOB"
+  loop_label: "loop"
+  deferred_label: "loop-deferred"
+
+# extra reading injected into the evaluate prompt (paths relative to target)
+context_docs:
+  - "CLAUDE.md"
+  - "docs/backlog-multiuser.md"   # carries the de-scope list
+
+notify:
+  email: "siddharth99.ram@gmail.com"
+
+policy:
+  budget_output_tokens: 500000
+  budget_usd_ceiling: 40
+  reserve_fraction: 0.10
+  max_lanes: 4
+  max_concurrent_lanes: 2
+  spawn_stagger_seconds: 20
+  lane_max_turns: 80
+  refresh_wait_min: 10
+  models:
+    evaluate: opus
+    file_stories: sonnet
+    plan: opus
+    review: opus
+    integrate: sonnet
+    finalize: haiku
+    lane_tiers: { high: opus, medium: sonnet, low: haiku }
+  timeouts_min:
+    evaluate: 15
+    file_stories: 10
+    plan: 10
+    review: 10
+    lane: 45
+    integrate: 20
+    finalize: 10
+
+verification:
+  - name: frontend-typecheck
+    cwd: "frontend"
+    cmd: "cmd /c npm run build"
+  - name: refresh-e2e
+    cwd: "."
+    cmd: "{venv_python} -m src.refresh"
+
+# Ordered stage list — the plugin point. M1 ships evaluation-only; flip to the
+# full list to enable execution (M2). A future PM agent inserts "pm_review"
+# before "review".
+stages: [collect, evaluate, file_stories, finalize]
+# M2: stages: [collect, evaluate, file_stories, plan, review, execute, integrate, finalize]

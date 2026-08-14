@@ -1,0 +1,14 @@
+{
+  "date": "2026-01-01",
+  "project": "job-applier",
+  "status": "ok",
+  "stages_done": [
+    "collect",
+    "evaluate",
+    "file_stories",
+    "finalize"
+  ],
+  "usage": [],
+  "lanes": {},
+  "failures": []
+}

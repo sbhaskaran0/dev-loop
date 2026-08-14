@@ -1,0 +1,12 @@
+# per-run target-repo checkouts (recreated per run)
+worktrees/
+
+# big raw transcripts stay local; the curated artifacts in runs/ are tracked
+runs/**/*.raw-stdout.txt
+runs/**/raw-stdout.txt
+runs/scheduler.log
+runs/.lock
+
+__pycache__/
+*.py[cod]
+.venv/

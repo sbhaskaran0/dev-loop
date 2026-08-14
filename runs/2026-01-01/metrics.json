@@ -1,0 +1,31 @@
+{
+  "collected_at": "2026-01-01T09:30:00-08:00",
+  "target": "(fixture)",
+  "yield": {
+    "instrumented": true,
+    "note": null,
+    "per_day": [
+      {"date": "2026-01-01", "runs": 1, "new": 120, "new_qualifying": 4, "new_title_matched": 9, "boards_failed": 0},
+      {"date": "2025-12-31", "runs": 1, "new": 95, "new_qualifying": 2, "new_title_matched": 6, "boards_failed": 1}
+    ]
+  },
+  "applications": {
+    "instrumented": true,
+    "note": "denominator NOT instrumented: attempted is a weak prep-file proxy",
+    "total_tracked": 83,
+    "last_7_days": [{"date": "2026-01-01", "submitted": 3, "manual_submission": 1, "other": 0}],
+    "attempted_proxy_by_day": {"2026-01-01": 6}
+  },
+  "bugs": {
+    "instrumented": true,
+    "total": 1,
+    "open": [{"ts": "2026-01-01T10:00:00-08:00", "profile": "fixture", "page": "postings", "text": "Filter resets after refresh", "status": "open"}]
+  },
+  "tokens": {
+    "instrumented": true,
+    "cost_usd_by_day": {"2026-01-01": 12.34},
+    "sessions_tracked": 3,
+    "note": "fixture"
+  },
+  "preflight": []
+}

@@ -1,0 +1,14 @@
+{
+  "lanes": [
+    {
+      "id": "lane-1",
+      "issue": "JOB-999",
+      "tier": "low",
+      "est_output_tokens": 30000,
+      "files": ["frontend/src/components/PostingsPage.tsx"],
+      "story": "Fixture lane: preserve filter state across refresh. AC: filters survive a Refresh click.",
+      "verify": "cd frontend && npm run build"
+    }
+  ],
+  "deferred": []
+}
