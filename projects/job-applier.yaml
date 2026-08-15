@@ -36,6 +36,11 @@ context_docs:
 notify:
   email: "siddharth99.ram@gmail.com"
 
+# Passed as --mcp-config to every orchestrator-level Claude stage (NOT lane
+# executors): interactively-connected MCP servers don't load in headless -p
+# sessions, so Linear must be declared explicitly (stored OAuth is reused).
+mcp_config: '{"mcpServers":{"linear":{"type":"http","url":"https://mcp.linear.app/mcp"}}}'
+
 policy:
   budget_output_tokens: 500000
   budget_usd_ceiling: 40

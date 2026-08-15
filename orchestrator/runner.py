@@ -89,7 +89,8 @@ class Run:
             prompt, cwd=cwd, model=model, timeout_min=timeout_min,
             max_turns=max_turns, label=label,
             stagger_s=self.cfg["policy"]["spawn_stagger_seconds"],
-            raw_path=self.run_dir / f"{safe}.raw-stdout.txt")
+            raw_path=self.run_dir / f"{safe}.raw-stdout.txt",
+            mcp_config=self.cfg.get("mcp_config"))
         self.budget.record(claude_proc.usage_entry(result, label))
         self.save_state()
         return result

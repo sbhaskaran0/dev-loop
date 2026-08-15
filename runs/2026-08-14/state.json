@@ -3,9 +3,45 @@
   "project": "job-applier",
   "status": "ok",
   "stages_done": [
-    "collect"
+    "collect",
+    "evaluate",
+    "finalize",
+    "file_stories"
   ],
-  "usage": [],
+  "usage": [
+    {
+      "label": "evaluate",
+      "output_tokens": 20810,
+      "input_tokens": 3762,
+      "cost_usd": 1.9893295,
+      "num_turns": 30,
+      "is_error": false
+    },
+    {
+      "label": "finalize",
+      "output_tokens": 718,
+      "input_tokens": 27,
+      "cost_usd": 0.041544,
+      "num_turns": 3,
+      "is_error": false
+    },
+    {
+      "label": "file_stories",
+      "output_tokens": 3295,
+      "input_tokens": 10,
+      "cost_usd": 0.2632444,
+      "num_turns": 5,
+      "is_error": false
+    },
+    {
+      "label": "file_stories",
+      "output_tokens": 6282,
+      "input_tokens": 69,
+      "cost_usd": 0.4810601,
+      "num_turns": 15,
+      "is_error": false
+    }
+  ],
   "lanes": {},
   "failures": []
 }

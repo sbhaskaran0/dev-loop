@@ -1,0 +1,49 @@
+You are the finalize stage of an autonomous dev loop run (job-applier, 2026-08-14, status: ok). You are running unattended — never pause to ask anything. Two jobs, both best-effort; do what you can and report honestly.
+
+Linear is DISABLED this run — do not touch Linear.
+
+## 1. Linear relay (skip entirely if Linear is disabled above)
+
+Read `C:\Users\siddh\dev-loop\runs\2026-08-14/lane-results.json` and `C:\Users\siddh\dev-loop\runs\2026-08-14/integrate.json` if they exist (they may not — an evaluation-only run has neither; then skip this step):
+- For each lane merged into the PR: comment on its Linear issue (team = the project's team) that the work is on the run branch awaiting PR review, and move the issue to **In Progress** (NOT Done — nothing is Done until the human merges and verifies).
+- For each failed/blocked/conflicted lane: comment with the reason (conflicted branches were pushed for manual pickup) and leave/move the issue to In Progress or Todo as appropriate.
+- Deferred stories: comment "deferred by dev-loop on budget" if not already noted.
+
+## 2. Summary email
+
+Send an email via the Gmail tools (they may be deferred — load them via tool search) to: siddharth99.ram@gmail.com
+Subject: `[dev-loop] job-applier 2026-08-14 — ok`
+Body: a compact plain-text summary — lead with the outcome (stories filed with ids, PR link or "no PR", failures needing attention), then key scorecard lines. No PR this run.
+Source material (the run log):
+
+```
+# Dev-loop run -- 2026-08-14 (job-applier)
+
+Status: **in progress** | started 2026-08-14T16:54:23 | budget 500,000 output tokens
+
+## collect
+
+- preflight clean
+- yield: ok
+- applications: ok
+- bugs: ok
+- tokens: ok
+
+---
+
+Final status: **ok** | spent 0 output tokens / $0.00 | finished 2026-08-14T16:54:23
+
+## evaluate
+
+scorecard written; **4 candidate enhancement(s)** proposed (see evaluation.md / candidates.json)
+
+---
+
+Final status: **ok** | spent 20,810 output tokens / $1.99 | finished 2026-08-14T17:00:17
+
+
+```
+
+Do not invent results that are not in the log. If email sending fails, say so in your final reply instead of DONE.
+
+Your final text reply must be exactly one line: DONE

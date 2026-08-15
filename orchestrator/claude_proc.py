@@ -98,7 +98,8 @@ def _parse_result(stdout: str) -> dict:
 
 def run_claude(prompt: str, *, cwd: str, model: str, timeout_min: int,
                max_turns: int | None = None, label: str = "claude",
-               stagger_s: float = 20.0, raw_path: Path | None = None) -> dict:
+               stagger_s: float = 20.0, raw_path: Path | None = None,
+               mcp_config: str | None = None) -> dict:
     """Run one headless claude -p session. Returns the parsed result dict,
     augmented with `_label`. Retries once (5s later) on spawn failure,
     nonzero exit, or unparseable output — never on timeout (the work may be
@@ -113,6 +114,11 @@ def run_claude(prompt: str, *, cwd: str, model: str, timeout_min: int,
            "--model", model]
     if max_turns:
         cmd += ["--max-turns", str(max_turns)]
+    if mcp_config:
+        # Interactively-connected MCP servers (e.g. Linear via ~/.claude.json)
+        # do NOT load in headless -p sessions — pass them explicitly; stored
+        # OAuth credentials are reused. Lane executors deliberately omit this.
+        cmd += ["--mcp-config", mcp_config]
 
     last_err = None
     for attempt in (1, 2):

@@ -1,0 +1,98 @@
+You are the story-filing stage of an autonomous dev loop. You are running unattended — never pause to ask anything.
+
+STRICT BOUNDARIES: Your only side effects are (a) Linear issue creation/lookup via the Linear MCP tools and (b) writing the single artifact file named below. Do not edit any repository file.
+
+## Candidates to file
+```json
+{
+  "candidates": [
+    {
+      "key": "app-outcome-tracking",
+      "title": "Application outcomes: make response rate a number",
+      "existing": false,
+      "issue": null,
+      "rationale": "G1 (weight 5) says the pipeline should optimize for responses and interviews, and its success criterion is 'response rate becomes trackable'. Today 83 applications carry a submit status (submitted/manual_submission/attempted) and no outcome field whatsoever, so response rate is not low — it is unrepresentable, and no open backlog story adds it (JOB-103 covers the denominator, not outcomes). Pareto-optimal: the field is additive and optional, absent on all 83 existing records, never read by the apply flow, and does not touch the (company, role) dedupe key — so yield, cost, and the submit path are all unaffected. Small, reversible, and it unblocks every future scorecard from scoring the top-weighted goal.",
+      "metrics_improved": ["applications", "G1"],
+      "metrics_traded": [],
+      "size": "medium",
+      "description": "Add an outcome dimension to application records, separate from the existing submit-status vocabulary.\n\n- Data: optional `outcome` (one of `none` | `rejected` | `screen` | `interview` | `offer` | `ghosted`) and `outcome_date` (ISO date) on each record in the active profile's `data/applications.json`. Records without the key read as `none` — no migration, no backfill required. `src/data.py:log_application_record` must not clear an existing outcome when a retry updates a record in place, and the (company, role) dedupe key is unchanged.\n- API: `PATCH /api/applications/{company}/{job_title}` (or an equivalent id-safe route) in `server/data_api.py` that sets only `outcome`/`outcome_date`, rejecting unknown values; `GET /api/applications` returns the new fields.\n- UI: an outcome selector on each row of `frontend/src/components/ApplicationsPage.tsx`, plus a header line reading `N of M applications have a recorded outcome`.\n- Metrics: extend the dev-loop adapter (`adapters/job_applier.py`, sibling repo) to emit `outcomes_by_status` and a `response_rate` over applications older than 14 days, so the morning scorecard can trend it.\n\nExplicitly out of scope: automatic outcome detection from Gmail. Manual marking first — it is verifiable, it costs nothing to run, and it establishes the schema an automated detector would later write into.\n\nAC: setting an outcome on one application through the UI persists it to `applications.json` and survives a server restart; re-running the apply flow against that same (company, role) updates the record without erasing its outcome; an application with no outcome key still loads and renders as `none`; and the metrics adapter reports a non-null `response_rate` once at least one outcome is set.",
+      "files_likely": [
+        "src/data.py",
+        "server/data_api.py",
+        "frontend/src/components/ApplicationsPage.tsx",
+        "frontend/src/api.ts"
+      ]
+    },
+    {
+      "key": "attempt-denominator",
+      "title": "Instrument the apply-attempt denominator at source (JOB-103)",
+      "existing": true,
+      "issue": "JOB-103",
+      "rationale": "Already open, and it is the right partner to app-outcome-tracking: outcomes over an untrustworthy denominator still do not yield a rate. The current proxy counts prep-snapshot file timestamps and is demonstrably wrong in both directions — on 2026-08-13 seven jobs were prepped (Ambience, Benchling, ClickUp, Hadrian, Headway, Propel, Ramp) but only five were logged as submitted, leaving ClickUp and Ramp with no record of having been parked, failed, or abandoned; and the proxy reports 5 attempts on 2026-08-12 when no prep file in the profile carries that date at all. Improves the applications metric and G1 with no cost to yield or token spend. NOTE: Linear was disabled this run, so this scope is reconstructed from the metrics collector's note rather than the issue body — reconcile with the filed issue before adding acceptance criteria, and do not file a duplicate.",
+      "metrics_improved": ["applications", "G1"],
+      "metrics_traded": [],
+      "size": "medium",
+      "description": "Emit a durable attempt record from the apply flow itself instead of inferring attempts from prep-file mtimes.\n\n- When a job enters the apply flow (prep/snapshot), append an attempt record with the job key, timestamp, and profile; when the flow terminates, close it with a terminal state (`submitted`, `manual_submission`, `parked:<reason>`, `dead_posting`, `abandoned`).\n- Parked/abandoned jobs must be visible, not silently absent — that is the ClickUp/Ramp case above.\n- The dev-loop adapter then reads real attempts instead of `attempted_proxy_by_day`, and the proxy code path can be deleted.\n\nAC: a batch run over N jobs produces exactly N attempt records whose terminal states sum to N; a job that is parked mid-flow appears with its park reason; the day attribution of every attempt matches the day the flow ran; and the metrics collector reports attempts without consulting prep-file timestamps.",
+      "files_likely": [
+        "src/data.py",
+        "src/mcp_server.py",
+        "server/data_api.py"
+      ]
+    },
+    {
+      "key": "baseline-dropoff-reasons",
+      "title": "Surface why title-matched postings fail the baseline",
+      "existing": false,
+      "issue": null,
+      "rationale": "Strong single-metric win (posting yield / G1 targeting quality) at near-zero cost: `store.passes_baseline` already computes and returns the reason (`title` / `seniority:<x>` / `location` / `salary_below_floor`), and `list_postings_from_store` currently discards it into an undifferentiated `hidden_by_criteria` counter at src/store.py:395. Today's digest shows 511 title-matched postings collapsing to 262 qualifying, with eight boards converting title-matched to zero — Brex 33 to 0, Databricks 31 to 0, Anthropic 19 to 0, Scale AI 19 to 0, Airbnb 15 to 0, Decagon 12 to 0, Figma 8 to 0, Robinhood 7 to 0. That is roughly 144 title-matched roles at the most desirable employers disappearing for reasons nobody can see, and it is impossible to tell whether the filters are correctly strict or quietly eating the best half of the funnel. Trade-off: one extra dict increment per row in an already-O(rows) loop, and a few lines of digest output — no schema change, no behavior change to filtering itself. Read-only diagnostics, so it cannot regress apply or ingest.",
+      "metrics_improved": ["yield", "G1"],
+      "metrics_traded": [],
+      "size": "small",
+      "description": "Keep the drop-off reason `passes_baseline` already returns and report it.\n\n- `src/store.py`: in `list_postings_from_store`, accumulate `_why` into a `hidden_by_reason: {reason: count}` dict (and a per-company breakdown) alongside the existing `hidden_by_criteria` total; return it in the response. Keep `hidden_by_criteria` as-is so the existing frontend banner does not break.\n- `src/refresh.py`: add a drop-off column or short section to `data/digest-latest.md` — per company, the reason that kills the most title-matched roles.\n- Optional, only if it costs nothing: expose the breakdown in the postings criteria banner tooltip in `frontend/src/components/PostingsPage.tsx`.\n\nThis is diagnostics only. Do NOT change any filter thresholds as part of this story — the point is to give the user the evidence to decide that separately.\n\nAC: a refresh run produces a digest whose drop-off section accounts for the full title-matched-minus-qualifying gap (511 - 262 in today's snapshot) with reason counts that sum correctly; `hidden_by_criteria` still returns the same total it does today; and for Brex specifically the digest names the dominant reason its 33 title-matched roles fail.",
+      "files_likely": [
+        "src/store.py",
+        "src/refresh.py",
+        "frontend/src/components/PostingsPage.tsx"
+      ]
+    },
+    {
+      "key": "bug-report-lifecycle",
+      "title": "Let a triaged bug report be closed",
+      "existing": false,
+      "issue": null,
+      "rationale": "The bug channel is write-only: `POST /api/bug-report` always writes `status: \"open\"`, `GET /api/bug-reports` filters on open, and nothing in the codebase ever writes another status (server/data_api.py:658-691). The single existing report is self-labelled an instrumentation smoke test, so without a close path it will head every morning scorecard indefinitely and the metric can never distinguish 'nothing broke' from 'nobody can close anything'. Serves G3 (weight 4) by making a verification signal honest, and it is what makes the loop's own bug triage actionable. Pareto: append-only integrity is preserved (a resolution is a new line folded by the reader), no existing record changes meaning, and no other metric is touched.",
+      "metrics_improved": ["bugs", "G3"],
+      "metrics_traded": [],
+      "size": "small",
+      "description": "Add a status transition to the bug-report store without giving up append-only writes.\n\n- Give each report a stable id (its `ts` is already unique enough, or add a short uuid at write time).\n- `POST /api/bug-report/{id}/status` appends a resolution line `{id, ts, status, note}` with status in `open` | `fixed` | `wontfix` | `duplicate` | `not-a-bug`. The reader in `GET /api/bug-reports` folds lines by id, last-write-wins, and returns both open and resolved lists so history is never lost.\n- Frontend: a small resolved/open list with a close control (reuse `BugReportModal.tsx` styling; no new page needed).\n- Then triage the two known items: close the 2026-08-14 smoke-test report as `not-a-bug`, and note the real finding behind it — the in-app Refresh button preserves filter state (`runRefresh` calls `reload()` and never resets it), but a browser reload does not, because filter state is component `useState` with no URL or localStorage persistence. Do NOT fix that here; the 2026-01-01 run already proposed `fix-postings-filter-reset`.\n\nAC: closing a report through the UI makes it disappear from the open list and appear in the resolved list; `data/bug-reports.jsonl` still only ever grows (no line is rewritten or deleted); a torn line anywhere in the file still does not hide the rest; and the dev-loop metrics collector reports `open: []` after the smoke-test report is closed.",
+      "files_likely": [
+        "server/data_api.py",
+        "frontend/src/components/BugReportModal.tsx",
+        "frontend/src/api.ts"
+      ]
+    }
+  ]
+}
+
+```
+
+## Task
+
+For each candidate, in Linear team "Job Applier Task Management":
+- If `existing` is true (or an issue with essentially the same title already exists — check first with a list/search), reuse that issue id; do not create a duplicate.
+- Otherwise create the issue: the candidate's `title` and `description` (keep the AC: clause), label "loop" if the label exists (skip labels if creation fails — labels are optional), priority Medium unless the rationale argues urgency.
+- Leave every issue in Todo state. Do NOT start or close anything.
+
+## Artifact (write exactly this path)
+
+`C:\Users\siddh\dev-loop\runs\2026-08-14/stories.json`:
+```json
+{
+  "stories": [
+    {"key": "short-slug", "issue": "JOB-123", "title": "...", "size": "small",
+     "description": "...", "files_likely": ["..."], "created": true}
+  ]
+}
+```
+
+Include every candidate, whether created or reused. Your final text reply must be exactly one line: DONE
